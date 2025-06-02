@@ -1,0 +1,244 @@
+WBS,Task,Duration, Predecessors, Successors
+1,CONTRACT AWARD,0,," 4,8,10,136,11"
+2,PRACTICAL COMPLETION,0," 36,7,31,69,9,111,123,148,223,226,240,238,243,213,6,12",
+3,PRELIMINARIES,,,
+4,"Site establishment & disestablishment including but not limited to, mandatory permits and fees",5," 1,10,8,11"," 5,12,14,102,103,104,107,7"
+5,Establishment and maintenance of Provision for Traffic in accordance with AS 1742 Manual of uniform traffic control devices and as directed by the Superintendent,0," 4,8",  6 
+6,Construction Survey Set out,0," 5,8",  2 
+7,"As constructed drawings and data, including surveying & drafting in accordance with Council Standards",5," 4,30",  2 
+8,Preparation & implementation of project quality & OHS&R plans,5,  1 ," 4,5,6"
+9,Geotechnical Testing,0,  32 ,  2 
+10,Portable Long Service Levy,0,  1 ,  4 
+11,Enviromental Management (including ASS management),0,  1 ,  4 
+12,Provision for Water,,  4 ,  2 
+13,SEDIMENT & EROSION CONTROL,,,
+14,"Establishment and maintenance of interim site drainage as required, sediment and erosion control devices as nominated on drawings and as directed by the Superintendent complete in place",3,  4 ,  17 
+15,EARTHWORKS,,,
+16,Tree Protection,,,
+17,"Tree protection including installation, maintenance and removal at the completion of works (Provisional Quantity)",1,  14 ,  19 
+18,"Clearing, Grubbing & Demolition",,,
+19,"Clearing, grubbing vegetation and disposal off site of cleared vegetation, including but not limited to loading, transportation and dumping fees as nominated on the project drawings",4,  17 ," 20,29,126,159,185"
+20,Existing Bitumen Seal,5,"  19,159 ",  21 
+21,Existing Concrete Kerb / Kerb & Channel,2,  20 ," 22,27"
+22,"Remove existing structures, slabs, tanks etc.",1,  21 ,  23 
+23,Backfill and compact existing well to WRC requirements,1,  22 ,  24 
+24,Relocate existing hazard marker and street sign,1,  23 ,  25 
+25,Remove and stack existing unused signage as directed,1,  24 ,
+26,Reinstate existing island and landscaping upon completion of stormwater drainage,1,  98 ,  36 
+27,Remove abandoned Storm Water Lines and headwalls and dispose off site,1,  21 ,  32 
+28,Earthworks,,,
+29,"Strip and stockpile topsoil from areas of excavation and filling in accordance with the specification (measured as a solid volume, calculated based on an average 100mm natural topsoil depth)",3,  19 ,"  32,186 "
+30,"Respread topsoil in accordance with the specification (measured as a solid volume, calculated based on an average 100mm natural topsoil depth)",2," 79,67,68,115,215,173"," 7,31,36,195FF"
+31,Remove from site unused grip material as directed (Provisional),2,  30 ,  2 
+32,"Cut to fill including but not limited to, moisture control and compaction as specified (in-place compacted volume of filling)",3," 27,29"," 9,33,187,177FF"
+33,"Imported Fill material including but not limited to, moisture control and compaction as specified (in-place compacted volume of filling)",6,  32 ," 34,38,187FF,161,163FF,206FF"
+34,"Cut to spoil including but not limited to loading, transportation and tip fees (Provisional)",1,  33 ,"  35,205 "
+35,"Removal of unsuitable material including excavation, filling and spoiling material (provisional)",1,  34 ,  38 
+36,Grass seeding to disturbed areas as directed by the Superintendent.,1," 26,30,99,134,129",  2 
+37,ROAD WORKS,,,
+38,"Sub grade preparation as specified including, but not limited to scarifying, moisture control, blending, spreading, compaction and trimming",13," 33,35,206,161"," 82,101,146,183FF,164FF,212,208"
+39,Pavement A1,,,
+40,Base Course - 125mm Type 2.1,2," 41,47,59",  43 
+41,Sub-base Course - 100mm Type 2.3,2,"  85,101,149,183 "," 40,44"
+42,Pavement A2 - Roadways,,,
+43,Base Course - 125mm Type 2.1,1," 40,44",  46 
+44,Sub-base Course - 100mm Type 2.3,1,  41 ," 43,47"
+45,Pavement A2 - Rental Car Park,,,
+46,Base Course - 125mm Type 2.1,2," 43,47"," 72,53"
+47,Sub-Base Course - 100mm Type 2.3,1,  44 ," 40,46,59,55"
+48,Pavement B - Roadway,,,
+49,Base Course - 150mm Type 2.1,1,  53 ,"  56,229 "
+50,Upper Sub-Base Course - 150mm Type 2.3,1," 54,63",  60 
+51,Lower Sub-Base Course - 150mm Type 2.3,1,"  55,212,211 "," 54,63"
+52,Pavement B - Public Car Park including Road 3,,,
+53,Base Course - 150mm Type 2.1,2," 46,60,239"," 49,189,166FF"
+54,Upper Sub Base Course - 150mm Type 2.3,2,  51 ," 50,190,165FF"
+55,Lower Base Course - 150mm Type 2.3,2,  47 ,  51 
+56,Final Trim to Pavement,13,  49 ," 75,197FF,167FF"
+57,Concrete Works,,,
+58,"Concrete Kerb & Channel as specified in place, including but not limited to transitions, ramps & gullies",,,
+59,Barrier Kerb & Channel Type B1 600mm wide,6.7,  47 ," 40,93,193FF"
+60,Barrier Kerb Type B2,3.72,  50 ," 53,61,115,194FF"
+61,Semi Mountable Kerb Type SM4,1,  60 ," 62,227,231FF,192FF"
+62,Kerb Ramp,5,  61 ,  65 
+63,Raised Threshold Pedestrian Crossing,4.025,  51 ,  50 
+64,Additional Concrete Works,,,
+65,Concrete Footpaths 2.45m wide,5,  62 ," 66,173FF"
+66,Concrete Footpaths 2.5m wide,1,  65 ,  67 
+67,Concrete Footpaths 3m wide,8,  66 ," 30,68,216"
+68,"Concrete Infill to Median Islands to carparks and round about island, complete in place",4,  67 ,  30 
+69,"Wheelstops, complete in place (in accordance with AS2890.1)",1,  79 ," 2,200FF"
+70,Surfacing Works,,,
+71,Existing Public Carpark,,,
+72,First Seal: 7mm CRS60,1,  46 ,  73 
+73,"Second Seal: 40mm AC Surfacing, (DG10) complete in place, including but not limited to supply, compaction and prime coat)",1,  72 ,  110 
+74,Roadways and New Carpark,,,
+75,First Seal: 7mm CRS60 Primerseal,1," 56,95"," 76,233FF,168FF"
+76,"Second Seal: 40mm AC Surfacing, (DG10) complete in place, including but not limited to supply, compaction and prime coat)",3,  75 ," 78,118,147,242,234FF,191FF,169FF"
+77,Signage and Pavement Marking,,,
+78,"Signage and pavement marking, complete in place.  All work to be in accordance with the requirements of AS 1742 Manual of Uniform Traffic Control Devices (Provisional Sum)",1,  76 ," 79,203FF"
+79,Signage complete in place including supply and installation. All work to be in accordance with the requirements of AS 1742 Manual of Uniform Traffic Control Devices(Provisional Sum),1,"  78,203 "," 30,69"
+80,STORMWATER DRAINAGE,,,
+81,Pipework,,,
+82,375mm dia Class 2 RRJ,2,  38 ,  83 
+83,375mm dia Class 3 RRJ,1,  82 ," 84,88,97,217"
+84,450mm dia Class 2 RRJ,1," 83,88,217"," 85,89,175FF"
+85,450mm dia Class 3 RRJ,1," 84,89"," 41,90,98,196FF"
+86,Drainage Structures,,,
+87,Manholes as per IPWEA STD Drawings:,,,
+88,1050mm dia Access Chamber,19,  83 ," 84,89"
+89,900x900 mm Access Chamber,18," 84,88"," 85,90"
+90,4/10 - 900x900 Manhole,5," 85,89",  93 
+91,Kerb Inlets,,,
+92,On Grade (L),,,
+93,2.4m Lintel,6," 59,90","  95,202 "
+94,On Grade(RH),,,
+95,2.4m Lintel,7,"  93,202 ",  75 
+96,Pre-Cast Headwalls,,,
+97,Humes Precast Headwall or equivalent for 375mm pipe,2,  83 ,  98 
+98,Humes Precast Headwall or equivalent for 450mm pipe,2," 85,97"," 26,99"
+99,Rock Protection at Outlet Drains (300 Deep),1,  98 ,  36 
+100,ELECTRICAL AND LIGHTING,,,
+101,"Trenching for electrical, lighting and communications service Conduits, complete in place, including trenching, backfilling, reinstatment of surface and maintence of trench while open. (trench configuration not specified)",7,  38 ," 41,102FF,103FF,104FF,105,240,198FF,179FF"
+102,"Supply only of electrical conduits (100 diameter), conuits and marker tape",5," 4,101FF"," 105,181FF"
+103,"Supply only of electrical conduits (40 diameter), conuits and marker tape",5," 4,101FF",  105 
+104,"Supply only, conduits and marker tape",5," 4,101FF",  105 
+105,"Installation of electrical pit, complete in place, including trenching, bedding, supplying, laying, marker tape/hard cover and backfill. (trench configuration not specified)",6,"  101,102,103,104 "," 106,240FF"
+106,"Installation of communications pit, complete in place, including trenching, bedding, supplying, laying, marker tape/hard cover and backfill. (trench configuration not specified)",4,  105 ,  107 
+107,"Supply and installation of distribution board complete in place including all ground works, plinth and circuit breakers",3,"  4,106 ",  108 
+108,Supply and installation of electrical and communication conduits to gate controllers from nearest pits including all trenching and coordination with gate installer,1,  107 ,  109 
+109,Supply and installation of electrical and communication conduits to ticket machines from nearest pits including all trenching and coordination with ticket machine installer,2,  108 ,  111 
+110,"Supply and installation of new car park lights and poles to match existing including footing installation, pole and all cabling from distribution board",2,  73 ,  111 
+111,"Supply and installation of services pillar at car wash bays P1, P2,P3 incl socket outlets (IP56), Safety Switch and Hose Cock and all cabling back to distribution board including all cabling back to distribution board",3,"  109,110 ",  2 
+112,MISCELLANEOUS,,,
+113,Existing Services,,,
+114,"Service Conduit Crossings and Alterations to existing services, as required",,,
+115,Existing above ground services to be raised to compliment proposed earthworks level (50mm),1,  60 ,  30 
+116,Fencing & Vehicle Barriers,,,
+117,Vehicle Barriers - CCA Treated Logs,,,
+118,Trafficked roadways and busbays within the extents of stage 1 boundary,10,"  76,242 ","  119,201 "
+119,Extension of Trafficked roadways beyond stage 1 boundary. (prevent vehicles leaving roadway and parking outside formal carpark),11,"  118,201 ",  120 
+120,Public Carpark,4,  119 ,  121 
+121,Pedestrian Safety Fence,1,  120 ,"  122,241 "
+122,Supply & Installation of Fixed Bollards,1,"  121,241 ","  123,243 "
+123,Temporary Fencing & Signage,2,  122 ,  2 
+124,SCHEDULE B - SEWER WORKS,,,
+125,EARTHWORKS,,,
+126,Clearing & Grubbing,2,  19 ,  127 
+127,Strip & Stockpile Topsoil,1,  126 ,"  130,143 "
+128,Placement of Topsoil,1,  141 ,  129 
+129,Disposal of excess topsoil as directed,1,  128 ,  36 
+130,Gravel access and hardstand from airport pit min CBR10 300 thick(Provisional),1,  127 ,"  133,222 "
+131,SEWER WORKS,,,
+132,Gravity Sewer,,,
+133,Connection of existing DN100 AC gravity sewers to new ssanitary drain,2,"  130,141,144,222 ",  134 
+134,Decommision existing Septic Tanks and associated pipework (excluding demolition of tanks - refer schedule A),2,  133 ,  36 
+135,Sewerage Pump Station,,,
+136,"Supply & delivery of Proprietry PE Pump Station (incl pumps, pipework, electrical controls etc)",15," 1,143FF",  137 
+137,Installation of Sewerage Pump Station (including concrete ballast),2,  136 ,  138 
+138,Connection of gravity sewer pipe,1,  137 ,  139 
+139,Supply and construction of DN50 vent,1,  138 ,  140 
+140,Electrical connections from mains supply,7,  139 ,  141 
+141,Commisioning Pump Station and electrical controls,1,  140 ,"  128,133,151,219 "
+142,Rising Main,,,
+143,"Supply and construction of DN32 PE rising main (40OD PE100 PN16) incl 3 No. tees, ball vavles, pits for future STP connection",2,  127 ," 136FF,144"
+144,Connection to new wet weather storage tanks,1,  143 ,"  133,213 "
+145,Water Supply,,,
+146,Supply and construction of DN32 PE water supply main (40OD PE100 PN16) to  carpark hosecocks.,1,  38 ,  149 
+147,Supply and installation of DN32 RPZD in enclosure complete,1,  76 ,  148 
+148,"Supply, installation & connection of hosecocks to carwash Service Pillars complete (excluding pillars, refer Schedule A, 6.11)",1,  147 ,  2 
+149,Supply and construct DN25 water supply main (32OD PE100 PN16) to STP,2,  146 ,  41 
+150,Miscellaneous,,,
+151,Gate to STP Access,10.5066,  141 ,
+152,PROJECT OVERHEADS (TO BE SPREAD ACROSS ABOVE ITEMS),,,
+153,Project Supervision,,,
+154,Project Engineer,,,
+155,Resource Balance,,,
+156,Dual Grade Laser,,,
+157,Site Facilities,,,
+158,Wet Weather,,,
+159,Additional Clearing & Grubbing - Moving rental car park 10m to the north to avoid fibre optic cable.,1,  19 ,  20 
+160,Additional Material for Revised Levels (Main Pad),,,
+161,Additional Imported General Fill (BOQ Item 3.3.5),0,  33 ,  38 
+162,"Additional Fill, road base gravel, spray seal & AC to elongated access ramp",0.236377388,,
+163,Imported General Fill (BOQ Item 3.3.5),0.07749990313, 33FF,"  164,177 "
+164,Additional sub-grade preparation (BOQ item 4.1),0.05079365079," 38FF,163,179","  165,175 "
+165,Additional 2.3 Material (BOQ Item 4.2.3.2),0.02685706612," 54FF,164,175,181","  166,171 "
+166,Additional 2.1 Material (BOQ Item 4.2.3.1),0.02937491607," 53FF,165,171",  167 
+167,Additional final trim (BOQ Item 4.3),0.05185185185," 56FF,166",  168 
+168,Additional Spray Seal (BOQ Item 4.5.1.1),1," 75FF,167",  169 
+169,Additional AC (BOQ Item 4.5.1.2),1," 76FF,168",  173 
+170,Additional Kerb & Channel (Type B1),,,
+171,B1 Barrier Kerb & Channel (BOQ Item 4.4.1.1),0.4," 165,193FF",  166 
+172,Additional Footpath,,,
+173,Additional Concrete Footpath 2.45m Wide (BOQ Item 4.4.4.1),0.49," 65FF,169",  30 
+174,Additional Storm Water,,,
+175,Additional 450 mm Diameter Class 2 RRJ (BOQ Item 5.1.3),0.08132926687," 84FF,164,177",  165 
+176,Additional General Fill between rental car aprk and batter of new road one,,,
+177,Cut to Fill (BOQ Item 3.3.4),0.46000046," 32FF,163",  175 
+178,Additional Conduit & Trenching,,,
+179,Additional Trenching (BOQ Item 6.1),0.2222222222, 101FF,"  164,180 "
+180,Additional 100 diameter communications conduit,0.2222222222,  179 ,
+181,Additional 100 diameter electrical conduit (BOQ Item 6.2),0.2222222222, 102FF,  165 
+182,Remove & Replace Unsuitable (Extra Over BOQ Item 3.3.7),3.66667,  187 ,  183 
+183,Remove & Replace Soft Spots - Rental Car Park,2.7500025," 38FF,182",  41 
+184,Extension To Commercial Car Park,,,
+185,Clear & Grubbing (BOQ Item 3.2.1),0.1111111111,  19 ,  186 
+186,Stripping Topsoil (BOQ item 3.3.1),0.5,"  29,185 ",  187 
+187,Import General Fill (BOQ Item 3.3.5),1.349998313," 32,33FF,186","  188,182 "
+188,Prepare Sub-grade (BOQ Item 4.1),1.142857143,  187 ,  189 
+189,Import 2.1 (BOQ Item 4.2.3.1),0.7553549847,"  53,188 ",  190 
+190,Import 2.3 (BOQ Item 4.2.3.2),0.6042839878,"  54,189 ",  191 
+191,Primer Seal (7mm) (BOQ Item 4.5.1.1),1," 76FF,190",  192 
+192,SM4 Kerb (BOQ Item 4.4.1.3),1," 61FF,191",  193 
+193,B1 Kerb (BOQ Item 4.4.1.1),1," 59FF,192"," 171FF,194"
+194,B2 Kerb (BOQ Item 4.4.1.2),1," 60FF,193",  195 
+195,Topsoil to Back of Kerb (BOQ Item 3.3.2),0.08888888889," 30FF,194",  196 
+196,Additional 450 RCP (BOQ Item 5.1.4),0.4333116677," 85FF,195",  197 
+197,Final Trim (BOQ Item 4.3),1.333333333," 56FF,196",  198 
+198,Additional Conduit Trenching (BOQ Item 6.1),0.2999940001," 101FF,197", 199FF
+199,Additional Conduit (BOQ Item 6.3),1, 198FF,  200 
+200,Additional Wheel Stops (BOQ Item 4.4.4.5),0.1111111111," 69FF,199",  201 
+201,Additional Log Barrier Fence (BOQ Item 7.2.1.1),2,"  118,200 ",  119 
+202,New 2.4m Kerb Lintel,1.333333333,  93 ,"  95,203 "
+203,Additional Line Marking (BOQ Item 4.7.1),0.3333333333," 78FF,202",  79 
+204,Additional Box Out & General Fill,4.966666667,,
+205,Cut To Spoil (BOQ Item 3.3.6),4.966666667,  34 ,  206 
+206,Import General Fill (BOQ Item 3.3.5),1.676247905," 33FF,205",  38 
+207,Remove & Replace Unsuitable - Bus Bay & Round-a-bout,1.102694097,,
+208,Remove Soft Spots (BOQ Item 3.3.7),0.8244444444,  38 ,  209 
+209,Import General Fill (BOQ Item 3.3.5),0.2782496522,  208 ,  212 
+210,Stabilise Sub-Grade,7.78,,
+211,Supply GB Cement Stabilising Agent,, 212FF,  51 
+212,In-situ Stabilising Sub-grade,7.78,"  38,209 "," 51,211FF"
+213,Supply & Install Visi-ball Tank Level Indicator,1,  144 ,  2 
+214,Centre Median Footpath Beam Thickening,1.546666667,,
+215,"Excavate for, Supply, Place and Finish Additional N25 Concrete",1.066666667, 216SS,  30 
+216,"Supply, cut, tie and place SL72 Reinforcing Mesh",0.48,  67 , 215SS
+217,"Install 150mm & 225mm Roof water drainage lines from terminal building, including road crossings and stubs to existing stormwater pits",3,  83 ,  84 
+218,Installation of STP Irrigation System,,,
+219,Installation only of Pump No. 01 & Pump Well,25,  141 , 220FF
+220,Supply & Install Pump & Well No. 02,25, 219FF," 224,221FF"
+221,Supply & Installation of Electrical as Per E002 & Clarification Letter,25, 220FF,  223 
+222,Raise STP pad height 500mm and provide 100mm reinforced concrete slab,1,  130 ,"  133,223 "
+223,Supply & Install light to roof of container,1,"  221,222 ",  2 
+224,Supply & Installation of rising main from Pump well No. 02 to irrigation area as per H101 in existing cleared areas,5,  220 ,  225 
+225,"Supply & installation of irrigation area (3,000 sqm) as per H103 including air & flush valves",5,  224 ,  226 
+226,Supply & installation of signal cable as per clarification email,3,  225 ,  2 
+227,Installation of Edge Restraint,1,  61 ,  239 
+228,Fie Lay Away,3.372708649,,
+229,Cut To Spoil,0.1333333333,  49 ," 230,236FF"
+230,Prepare & Trim Sub-grade,0.1185185185,  229 ,  231 
+231,Edge Restraint,1," 61FF,230",  232 
+232,Supply & Place 2.1 Gravel,0.1208567976,  231 ,"  233,237 "
+233,Primer Seal,1," 75FF,232",  234 
+234,DG10 Asphalt (40mm),1," 76FF,233",  238 
+235,Bin Area,3.178928213,,
+236,General Fill,0.09499988125, 229FF,  237 
+237,Supply & Place Type 2.1 Gravel,0.08392833163,"  232,236 ",  238 
+238,Colourbonfd Fence (1800 High - 20m),3,"  234,237 ",  2 
+239,Additional Edge Restraint,1,  227 ,  53 
+240,Supply & Install Additional Electrical Pit,1," 101,105FF",  2 
+241,Extra Over Log Barrier Fenec - Monowills Pedestrian Safety Fence,0,  121 ,  122 
+242,Additional AC,1,  76 ,  118 
+243,Miscellaneous Additional Works,3,  122 ,  2 
