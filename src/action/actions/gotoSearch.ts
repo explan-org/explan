@@ -11,6 +11,9 @@ export class GoToSearchAction implements Action {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async do(_explanMain: ExplanMain): Promise<Result<Action>> {
     document
+      .querySelector<HTMLButtonElement>("button[data-target='task-tab']")!
+      .click();
+    document
       .querySelector<SearchTaskPanel>('search-task-panel')!
       .setKeyboardFocusToInput('name-only');
     return ok(this);
@@ -25,6 +28,9 @@ export class GoToFullSearchAction implements Action {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async do(_explanMain: ExplanMain): Promise<Result<Action>> {
+    document
+      .querySelector<HTMLButtonElement>("button[data-target='task-tab']")!
+      .click();
     document
       .querySelector<SearchTaskPanel>('search-task-panel')!
       .setKeyboardFocusToInput('full-info');
