@@ -278,7 +278,7 @@ export class ExplanMain extends HTMLElement {
         }
       });
       this.criticalPath = this.simulationPanel!.simulate(
-        this.plan.chart,
+        this.plan,
         NUM_SIMULATION_LOOPS,
         this.criticalPath,
         finishedTasks

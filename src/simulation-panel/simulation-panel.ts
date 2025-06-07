@@ -6,6 +6,8 @@ import {
 } from '../simulation/simulation';
 import { Chart } from '../chart/chart';
 import { difference } from '../dag/algorithms/circular';
+import { Plan } from '../plan/plan';
+import { reportErrorMsg } from '../report-error/report-error';
 
 export interface SimulationSelectDetails {
   durations: number[] | null;
@@ -23,6 +25,7 @@ export class SimulationPanel extends HTMLElement {
     paths: new Map(),
     tasks: [],
   };
+  plan: Plan | null = null;
   chart: Chart | null = null;
   numSimulationLoops: number = 0;
   originalCriticalPath: number[] = [];
@@ -32,18 +35,19 @@ export class SimulationPanel extends HTMLElement {
   }
 
   simulate(
-    chart: Chart,
+    plan: Plan,
     numSimulationLoops: number,
     originalCriticalPath: number[],
     finishedTasks: Set<number>
   ): number[] {
+    this.plan = plan;
+    this.chart = plan.chart;
     this.results = simulation(
-      chart,
+      this.chart,
       numSimulationLoops,
       originalCriticalPath,
       finishedTasks
     );
-    this.chart = chart;
     this.numSimulationLoops = numSimulationLoops;
     this.originalCriticalPath = originalCriticalPath;
 
@@ -106,6 +110,15 @@ export class SimulationPanel extends HTMLElement {
     `;
   }
 
+  humanDurationValue(duration: number): string {
+    const ret = this.plan!.durationUnits.durationToHuman(duration);
+    if (!ret.ok) {
+      reportErrorMsg(ret.error);
+      return '';
+    }
+    return ret.value;
+  }
+
   template(): TemplateResult {
     if (this.results.paths.size === 0) {
       return html``;
@@ -152,7 +165,7 @@ export class SimulationPanel extends HTMLElement {
           (taskEntry: CriticalPathTaskEntry) =>
             html`<tr>
               <td>${this.chart!.Vertices[taskEntry.taskIndex].name}</td>
-              <td>${taskEntry.duration}</td>
+              <td>${this.humanDurationValue(taskEntry.duration)}</td>
               <td>
                 ${Math.floor(
                   (100 * taskEntry.numTimesAppeared) / this.numSimulationLoops
