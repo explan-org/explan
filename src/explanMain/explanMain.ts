@@ -599,6 +599,10 @@ export class ExplanMain extends HTMLElement {
     this.alternateTaskDurations = null;
     this.recalculateSpansAndCriticalPath();
     this.paintChart();
+    this.querySelector('#catchup')!.classList.toggle(
+      'hidden',
+      this.plan.status.stage !== 'started'
+    );
     document.dispatchEvent(new CustomEvent('plan-definition-changed'));
   }
 
