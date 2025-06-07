@@ -417,14 +417,16 @@ export function renderTasksToCanvas(
           ctx.fillStyle = getPattern(
             ctx,
             opts.colors.get('secondary'),
-            opts.colors.get('surface')
+            opts.colors.get('surface'),
+            'crosshatch'
           )!;
           ctx.strokeStyle = opts.colors.get('secondary');
         } else {
           ctx.fillStyle = getPattern(
             ctx,
             opts.colors.get('primary'),
-            opts.colors.get('surface')
+            opts.colors.get('surface'),
+            'crosshatch'
           )!;
           ctx.strokeStyle = opts.colors.get('primary');
         }
@@ -432,7 +434,8 @@ export function renderTasksToCanvas(
         ctx.fillStyle = getPattern(
           ctx,
           opts.colors.get('primary'),
-          opts.colors.get('surface')
+          opts.colors.get('surface'),
+          'crosshatch'
         )!;
         ctx.strokeStyle = opts.colors.get('primary');
       }
@@ -1342,10 +1345,15 @@ const drawSwimLaneLabels = (
 // Keep patterns around for both light mode and dark mode.
 const patterns: Map<string, CanvasPattern> = new Map();
 
+type pattern = 'crosshatch' | 'singlehash';
+
+const patternSize = 8;
+
 const getPattern = (
   ctx: CanvasRenderingContext2D,
   color: string,
-  background: string
+  background: string,
+  pattern: pattern = 'singlehash'
 ): CanvasPattern | null => {
   const key = `${color}:${background}`;
   let ret = patterns.get(key);
@@ -1354,8 +1362,8 @@ const getPattern = (
   }
 
   const canvas = document.createElement('canvas');
-  canvas.width = 4;
-  canvas.height = 4;
+  canvas.width = patternSize;
+  canvas.height = patternSize;
 
   const pCtx = canvas.getContext('2d')!;
 
@@ -1363,8 +1371,12 @@ const getPattern = (
   pCtx.fillRect(0, 0, canvas.width, canvas.height);
   pCtx.strokeStyle = color;
   pCtx.lineWidth = 1;
-  pCtx.moveTo(0, 4);
-  pCtx.lineTo(4, 0);
+  pCtx.moveTo(0, patternSize);
+  pCtx.lineTo(patternSize, 0);
+  if (pattern === 'crosshatch') {
+    pCtx.moveTo(0, 0);
+    pCtx.lineTo(patternSize, patternSize);
+  }
   pCtx.stroke();
 
   ret = ctx.createPattern(canvas, 'repeat')!;
