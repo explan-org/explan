@@ -17,7 +17,7 @@
     "jest": "npx jest",
     "jest:cont": "npx jest --watchAll",
     "docs:serve": "cd docs && npx @11ty/eleventy --serve",
-    "docs:deploy": "npx firebase deploy",
+    "docs:deploy": "cd docs && npx @11ty/eleventy && cd - && npx firebase deploy",
     "test": "npx web-test-runner \"./src/**/*_test.ts\" --puppeteer",
     "watch": "git ls-files | entr bash -c \"npm run build:all && node ./build/merge.ts\""
   },
