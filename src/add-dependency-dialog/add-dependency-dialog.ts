@@ -21,6 +21,9 @@ export class AddDependencyDialog extends HTMLElement {
       this.dialog!.close();
       this.resolve(e.detail.taskIndex);
     });
+    this.querySelector('#dependency-cancel')!.addEventListener('click', () => {
+      this.dialog!.close();
+    });
   }
 
   /** Populates the dialog and shows it as a Modal dialog and returns a Promise
