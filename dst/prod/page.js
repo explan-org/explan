@@ -174,6 +174,7 @@
         </label>
         <table>
           ${this.resourceDefinition.values.map((e,t)=>k`<tr>
+                <td>${t===0?"*":""}</td>
                 <td>
                   <input
                     data-old-value=${e}
@@ -234,6 +235,7 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td>
               <button
                 @click=${()=>{this.newResourceValue()}}
@@ -246,6 +248,7 @@
         <div class="dialog-footer">
           <button @click=${()=>this.cancel()}>Close</button>
         </div>
+        <p>* = default</p>
       </dialog>
     `}};customElements.define("edit-resource-definition",ps);var Ie=class n{_precision;constructor(e=0){Number.isFinite(e)||(e=0),this._precision=Math.abs(Math.trunc(e))}round(e){return+e.toFixed(this._precision)}rounder(){return e=>this.round(e)}get precision(){return this._precision}toJSON(){return{precision:this._precision}}static fromJSON(e){return e===void 0?new n:new n(e.precision)}};var $e=class n{range;default;isStatic;precision;hideEditor;constructor(e,t=new le,r=!1,i=new Ie(1),s=!1){this.precision=i,this.range=t,this.default=e,this.isStatic=r,this.hideEditor=s,this.rationalize()}rationalize(){this.range=new le(this.precision.round(this.range.min),this.precision.round(this.range.max)),this.default=this.clampAndRound(this.default)}clampAndRound(e){return this.precision.round(this.range.clamp(e))}toJSON(){return{range:this.range.toJSON(),default:this.default,precision:this.precision.toJSON()}}static fromJSON(e){return e===void 0?new n(0):new n(e.default||0,le.fromJSON(e.range),!1,Ie.fromJSON(e.precision))}};var ms=class extends HTMLElement{explanMain=null;planDefinitionChangedCallback;constructor(){super(),this.planDefinitionChangedCallback=()=>{this.explanMain!==null&&this.render()}}connectedCallback(){document.addEventListener("plan-definition-changed",this.planDefinitionChangedCallback)}disconnectedCallback(){document.removeEventListener("plan-definition-changed",this.planDefinitionChangedCallback)}render(){N(this.template(),this)}setConfig(e){this.explanMain=e,this.render()}template(){let e=this.explanMain.plan.metricDefinitions,t=Object.keys(e).sort((r,i)=>{let s=e[r],o=e[i];return s.isStatic===o.isStatic?r.localeCompare(i):s.isStatic?-1:1});return k` <h3>Metrics</h3>
       <table>

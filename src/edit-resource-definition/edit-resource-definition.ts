@@ -162,6 +162,7 @@ export class EditResourceDefinition extends HTMLElement {
           ${this.resourceDefinition.values.map(
             (value: string, valueIndex: number) => {
               return html`<tr>
+                <td>${valueIndex === 0 ? '*' : ''}</td>
                 <td>
                   <input
                     data-old-value=${value}
@@ -233,6 +234,7 @@ export class EditResourceDefinition extends HTMLElement {
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td>
               <button
                 @click=${() => {
@@ -247,6 +249,7 @@ export class EditResourceDefinition extends HTMLElement {
         <div class="dialog-footer">
           <button @click=${() => this.cancel()}>Close</button>
         </div>
+        <p>* = default</p>
       </dialog>
     `;
   }
