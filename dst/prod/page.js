@@ -627,7 +627,7 @@
             </tr>`)}
       </table>
     `}};customElements.define("simulation-panel",Ws);var qs=class extends HTMLElement{explanMain=null;taskSearchControl=null;connectedCallback(){this.explanMain=document.querySelector("explan-main"),this.explanMain&&(this.taskSearchControl=this.querySelector("task-search-control"),this.addEventListener("task-change",e=>{this.explanMain.setSelection(e.detail.taskIndex,e.detail.focus,!0),this.classList.add("hidden")}),this.addEventListener("task-focus",()=>this.setKeyboardFocusToInput("full-info")))}setKeyboardFocusToInput(e){this.classList.remove("hidden"),this.taskSearchControl.tasks=this.explanMain.plan.chart.Vertices,this.taskSearchControl.includedIndexes=this.explanMain.plan.chart.Vertices.map((t,r)=>r).slice(1,-1),this.taskSearchControl.setKeyboardFocusToInput(e)}};customElements.define("search-task-panel",qs);var Ra=Qa(wa(),1),Ol=(n,e)=>[0,...n.map(r=>[r,r+1]).flat(),e],Ll=(n,e)=>{let t=[],r=!1;for(let i=0;i<n.length-1;i++){let s=e.slice(n[i],n[i+1]);r?t.push(k`<b>${s}</b>`):t.push(k`${s}`),r=!r}return t},Il=(n,e)=>Ll(Ol(n,e.length),e),$l=n=>n.searchResults.map((e,t)=>k` <li
-        tabindex="0"
+        tabindex="-1"
         @click="${()=>n.selectSearchResult(t,!1)}"
         ?data-focus=${t===n.focusIndex}
         data-index=${t}

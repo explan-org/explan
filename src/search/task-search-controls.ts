@@ -96,7 +96,7 @@ const searchResults = (searchTaskPanel: TaskSearchControl): TemplateResult[] =>
   searchTaskPanel.searchResults.map(
     (task: SearchResult, index: number) =>
       html` <li
-        tabindex="0"
+        tabindex="-1"
         @click="${() => searchTaskPanel.selectSearchResult(index, false)}"
         ?data-focus=${index === searchTaskPanel.focusIndex}
         data-index=${index}
