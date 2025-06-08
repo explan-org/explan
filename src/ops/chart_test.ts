@@ -16,7 +16,6 @@ import {
 } from './chart.ts';
 import { SetPlanStartStateOp, SetTaskCompletionOp } from './plan.ts';
 import { Plan } from '../plan/plan.ts';
-import { DEFAULT_TASK_NAME } from '../chart/chart.ts';
 import { DirectedEdge } from '../dag/dag.ts';
 import { Span } from '../slack/slack.ts';
 import { SetMetricValueOp } from './metrics.ts';
