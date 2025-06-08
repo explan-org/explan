@@ -138,6 +138,9 @@ export class ExplanMain extends HTMLElement {
       'click',
       async () => await this.catchUp()
     );
+    this.querySelector('#reset-zoom')!.addEventListener('click', () =>
+      executeByName('ResetZoomAction', this)
+    );
 
     this.dependenciesPanel = this.querySelector('dependencies-panel')!;
 
@@ -707,6 +710,7 @@ export class ExplanMain extends HTMLElement {
 
   setRadar(on: boolean) {
     this.querySelector('radar-parent')!.classList.toggle('hidden', !on);
+    this.querySelector('#reset-zoom')!.classList.toggle('hidden', !on);
   }
 
   toggleCriticalPathsOnly() {
