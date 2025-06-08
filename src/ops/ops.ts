@@ -1,5 +1,6 @@
 import { Result, ok } from '../result.ts';
 import { Plan } from '../plan/plan.ts';
+import { resetTaskNameCounter } from './chart.ts';
 
 // Operations on Plans. Note they are reversible, so we can have an 'undo' list.
 

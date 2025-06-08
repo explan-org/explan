@@ -877,12 +877,19 @@ export function RemoveEdgeOp(i: number, j: number): Op {
   );
 }
 
+let taskNumber = 0;
+
+export const resetTaskNameCounter = () => {
+  taskNumber = 0;
+};
+
 export function InsertNewEmptyTaskAfterOp(taskIndex: number): Op {
   return new Op(
     [
       new RationalizeEdgesSubOp(),
       new AddTaskAfterSubOp(taskIndex),
       new SetMetricValueSubOp('Duration', DEFAULT_TASK_DURATION, taskIndex + 1),
+      new SetTaskNameSubOp(taskIndex + 1, `Task ${++taskNumber}`),
       new AddEdgeSubOp(0, taskIndex + 1),
       new AddEdgeSubOp(taskIndex + 1, -1),
       new RationalizeEdgesSubOp(),
