@@ -1,12 +1,12 @@
-import { TemplateResult, html, render } from "lit-html";
-import { Task } from "../chart/chart.ts";
-import { icon } from "../icons/icons.ts";
+import { TemplateResult, html, render } from 'lit-html';
+import { Task } from '../chart/chart.ts';
+import { icon } from '../icons/icons.ts';
 
-export type DepType = "pred" | "succ";
+export type DepType = 'pred' | 'succ';
 
 export const depDisplayName: Record<DepType, string> = {
-  pred: "Predecessors",
-  succ: "Successors",
+  pred: 'Predecessors',
+  succ: 'Successors',
 };
 
 interface DepenencyEvent {
@@ -16,15 +16,15 @@ interface DepenencyEvent {
 
 declare global {
   interface GlobalEventHandlersEventMap {
-    "delete-dependency": CustomEvent<DepenencyEvent>;
-    "add-dependency": CustomEvent<DepenencyEvent>;
+    'delete-dependency': CustomEvent<DepenencyEvent>;
+    'add-dependency': CustomEvent<DepenencyEvent>;
   }
 }
 
 const kindTemplate = (
   dependenciesControl: DependenciesPanel,
   depType: DepType,
-  indexes: number[],
+  indexes: number[]
 ): TemplateResult => html`
   <tr>
     <th>${depDisplayName[depType]}</th>
@@ -40,7 +40,7 @@ const kindTemplate = (
           title="Delete the dependency on ${task.name}"
           @click=${() => dependenciesControl.deleteDep(taskIndex, depType)}
         >
-          ${icon("delete-icon")}
+          ${icon('delete-icon')}
         </button>
       </td>
     </tr>`;
@@ -53,25 +53,25 @@ const kindTemplate = (
         @click=${() => dependenciesControl.addDep(depType)}
         title="Add dependency."
       >
-        ${icon("add-icon")}
+        ${icon('add-icon')}
       </button>
     </td>
   </tr>
 `;
 
 const template = (
-  dependenciesControl: DependenciesPanel,
+  dependenciesControl: DependenciesPanel
 ): TemplateResult => html`
   <table>
     ${kindTemplate(
       dependenciesControl,
-      "pred",
-      dependenciesControl.predIndexes,
+      'pred',
+      dependenciesControl.predIndexes
     )}
     ${kindTemplate(
       dependenciesControl,
-      "succ",
-      dependenciesControl.succIndexes,
+      'succ',
+      dependenciesControl.succIndexes
     )}
   </table>
 `;
@@ -88,37 +88,42 @@ export class DependenciesPanel extends HTMLElement {
   public setTasksAndIndices(
     tasks: Task[],
     predIndexes: number[],
-    succIndexes: number[],
+    succIndexes: number[]
   ) {
     this.tasks = tasks;
-    this.predIndexes = predIndexes;
-    this.succIndexes = succIndexes;
+    const finishIndex = tasks.length - 1;
+    this.predIndexes = predIndexes.filter(
+      (index: number) => index !== 0 && index !== finishIndex
+    );
+    this.succIndexes = succIndexes.filter(
+      (index: number) => index !== 0 && index !== finishIndex
+    );
     render(template(this), this);
   }
 
   public deleteDep(taskIndex: number, depType: DepType) {
     this.dispatchEvent(
-      new CustomEvent("delete-dependency", {
+      new CustomEvent('delete-dependency', {
         bubbles: true,
         detail: {
           taskIndex: taskIndex,
           depType: depType,
         },
-      }),
+      })
     );
   }
 
   public addDep(depType: DepType) {
     this.dispatchEvent(
-      new CustomEvent("add-dependency", {
+      new CustomEvent('add-dependency', {
         bubbles: true,
         detail: {
           taskIndex: -1,
           depType: depType,
         },
-      }),
+      })
     );
   }
 }
 
-customElements.define("dependencies-panel", DependenciesPanel);
+customElements.define('dependencies-panel', DependenciesPanel);
