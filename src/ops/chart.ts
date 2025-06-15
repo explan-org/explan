@@ -633,6 +633,27 @@ export class RestoreTaskCompletionsSubOp implements SubOp {
   }
 }
 
+export const taskPercentCompleteShouldBeChanged = (
+  newPercentComplete: number,
+  taskCompletion: TaskCompletion
+): boolean => {
+  switch (taskCompletion.stage) {
+    case 'finished':
+      // Don't update tasks that are already finished.
+      return false;
+      break;
+    case 'started':
+      // Don't update tasks that have larger percentComplete.
+      if (taskCompletion.percentComplete > newPercentComplete) {
+        return false;
+      }
+      break;
+    case 'unstarted':
+      break;
+  }
+  return true;
+};
+
 export class CatchupTaskSubOp implements SubOp {
   today: number;
   taskIndex: number;
@@ -665,15 +686,27 @@ export class CatchupTaskSubOp implements SubOp {
         span: this.span,
       });
     } else {
-      plan.setTaskCompletion(this.taskIndex, {
-        stage: 'started',
-        start: start,
-        percentComplete: clamp(
-          Math.floor((100 * (this.today - start)) / task.duration),
-          1,
-          99
-        ),
-      });
+      const newPercentComplete = clamp(
+        Math.floor((100 * (this.today - start)) / task.duration),
+        1,
+        99
+      );
+      const ret = plan.getTaskCompletion(this.taskIndex);
+      if (!ret.ok) {
+        return ret;
+      }
+
+      if (taskPercentCompleteShouldBeChanged(newPercentComplete, ret.value)) {
+        plan.setTaskCompletion(this.taskIndex, {
+          stage: 'started',
+          start: start,
+          percentComplete: clamp(
+            Math.floor((100 * (this.today - start)) / task.duration),
+            1,
+            99
+          ),
+        });
+      }
     }
     return ok({
       plan: plan,
@@ -720,15 +753,26 @@ export class CatchupSubOp implements SubOp {
           span: this.spans[index],
         });
       } else {
-        plan.setTaskCompletion(index, {
-          stage: 'started',
-          start: start,
-          percentComplete: clamp(
-            Math.floor((100 * (this.today - start)) / task.duration),
-            1,
-            99
-          ),
-        });
+        const newPercentComplete = clamp(
+          Math.floor((100 * (this.today - start)) / task.duration),
+          1,
+          99
+        );
+        const ret = plan.getTaskCompletion(index);
+        if (!ret.ok) {
+          return;
+        }
+        if (taskPercentCompleteShouldBeChanged(newPercentComplete, ret.value)) {
+          plan.setTaskCompletion(index, {
+            stage: 'started',
+            start: start,
+            percentComplete: clamp(
+              Math.floor((100 * (this.today - start)) / task.duration),
+              1,
+              99
+            ),
+          });
+        }
       }
     });
 
