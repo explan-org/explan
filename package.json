@@ -19,7 +19,7 @@
     "docs:serve": "cd docs && npx @11ty/eleventy --serve",
     "docs:deploy": "cd docs && npx @11ty/eleventy && cd - && npx firebase deploy",
     "test": "npx web-test-runner \"./src/**/*_test.ts\" --puppeteer",
-    "watch": "git ls-files | entr bash -c \"npm run build:all && node ./build/merge.ts\""
+    "watch": "git ls-files | grep -v _site | entr bash -c \"npm run build:all && node ./build/merge.ts\""
   },
   "keywords": [
     "gantt",
