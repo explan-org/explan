@@ -43,3 +43,27 @@ None.
 ### 0.0.1
 
 Initial release.
+
+### 0.0.4
+
+* Change button background when :active.
+* Don't shorten task completion when using Catchup.
+* Move the new task button out of the Task panel to the top bar.
+* Use 'click' events on canvas, not 'mousedown`. Fixes a bug where changing
+   values didn't always get saved.
+* Do not show Start and Finish on dependencies panel since they are added and
+  removed automatically and that can't be done manually.
+* Add input color-scheme: dark and reset tabindex=-1 for search results which
+  disallows tabbing to move through the search results.
+* Add cancel button to predecessor and successor dialogs.
+* Bring back zoom button.
+* Show which resource value is the default.
+* Increment new task names to make it easier to distinguish which one was just
+  added.
+* Display human durations on the simulation panel.
+* Add outline to the focused item in task-search-control to make it easier to
+  know which one is selected.
+* The Catchup button should only appear if the project is "started".
+* Use a different pattern for tasks on the critical path to better distinguish
+  them.
+* Force focus onto the "Task" tab when searching.
