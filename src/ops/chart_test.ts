@@ -367,6 +367,53 @@ describe('Chart Ops Tests', () => {
         }),
       ]);
     });
+
+    it('Does not shorten up percent complete.', () => {
+      TestOpsForwardAndBack([
+        T2Op((plan: Plan) => {
+          assert.deepEqual(arrowSummary(plan), ['Start->Finish']);
+          assert.equal(plan.chart.Vertices.length, 2);
+        }),
+
+        // Set a single task duration to 10. and 90% complete.
+        InsertNewEmptyTaskAfterOp(0),
+        SetTaskNameOp(1, 'A'),
+        SetMetricValueOp('Duration', 10, 1),
+
+        SetPlanStartStateOp({ stage: 'started', start: Date.now() }),
+        SetTaskCompletionOp(1, {
+          stage: 'started',
+          percentComplete: 90,
+          start: 0,
+        }),
+        T2Op((plan: Plan) => {
+          assert.deepEqual(arrowSummary(plan).sort(), [
+            'A->Finish',
+            'Start->A',
+          ]);
+          const comp = plan.getTaskCompletion(1);
+          assert.isTrue(comp.ok);
+          assert.equal(comp.value.stage, 'started');
+          if (comp.value.stage === 'started') {
+            assert.equal(comp.value.percentComplete, 90);
+          }
+        }),
+
+        // Now call Catchup to 5, which is in the middle of A.
+        CatchupOp(5, [new Span(0, 0), new Span(0, 10), new Span(10, 10)]),
+
+        TOp((plan: Plan) => {
+          const comp = plan.getTaskCompletion(1);
+          assert.isTrue(comp.ok);
+          assert.equal(comp.value.stage, 'started');
+          if (comp.value.stage === 'started') {
+            // Confirm that the percent complete stays at 90%, which is greater
+            // than 50%.
+            assert.equal(comp.value.percentComplete, 90);
+          }
+        }),
+      ]);
+    });
   });
 
   describe('RecalculateDurationSubOp', () => {
