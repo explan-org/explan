@@ -238,7 +238,7 @@ export class ExplanMain extends HTMLElement {
     this.mouseMove = new MouseMove(overlayCanvas);
     window.requestAnimationFrame(this.onMouseMove.bind(this));
 
-    overlayCanvas.addEventListener('mousedown', (e: MouseEvent) => {
+    overlayCanvas.addEventListener('click', (e: MouseEvent) => {
       const p = pt(e.offsetX, e.offsetY);
       if (this.updateHighlightFromMousePos !== null) {
         this.setSelection(

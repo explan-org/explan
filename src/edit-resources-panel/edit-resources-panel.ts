@@ -110,7 +110,7 @@ export class EditResourcesPanel extends HTMLElement {
   private async newResource() {
     let name = await document
       .querySelector<PromptDialog>('prompt-dialog')!
-      .prompt('Metric Name');
+      .prompt('Resource Name');
     if (name === null) {
       return;
     }
