@@ -141,6 +141,10 @@ export class ExplanMain extends HTMLElement {
     this.querySelector('#reset-zoom')!.addEventListener('click', () =>
       executeByName('ResetZoomAction', this)
     );
+    this.querySelector('#new-task-button')!.addEventListener(
+      'click',
+      async () => await executeByName('NewTaskAction', this)
+    );
 
     this.dependenciesPanel = this.querySelector('dependencies-panel')!;
 

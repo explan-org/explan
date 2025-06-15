@@ -96,17 +96,7 @@ export class SelectedTaskPanel extends HTMLElement {
   template(): TemplateResult {
     const taskIndex = this.taskIndex;
     if (taskIndex === -1) {
-      return html`
-        <button
-          class="icon-button"
-          @click=${async () =>
-            await executeByName('NewTaskAction', this.explanMain!)}
-          title="Add Task"
-        >
-          ${icon('add-icon')}
-        </button>
-        <div>No task selected.</div>
-      `;
+      return html`<div>No task selected.</div>`;
     }
     if (this.explanMain === null) {
       return html``;
@@ -123,14 +113,6 @@ export class SelectedTaskPanel extends HTMLElement {
 
     const task = this.plan.chart.Vertices[taskIndex];
     return html`
-      <button
-        class="icon-button"
-        @click=${async () =>
-          await executeByName('NewTaskAction', this.explanMain!)}
-        title="Add Task"
-      >
-        ${icon('add-icon')}
-      </button>
       <button
         class="icon-button"
         @click=${async () =>
