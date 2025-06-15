@@ -125,7 +125,7 @@ export class TaskCompletionPanel extends HTMLElement {
                   reportIfError(res);
                 }}
               >
-                Catchup
+                Catch Up
               </button>
             </label>
           </div>`;

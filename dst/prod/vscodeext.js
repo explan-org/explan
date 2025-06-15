@@ -138,7 +138,7 @@
                 title="Set the completion of the task to match today."
                 @click=${async()=>{let e=await this.explanMain.getToday();if(!e.ok){le(e.error);return}let t=e.value,r=await X($o(t,this.taskIndex,this.span),"planDefinitionChanged",!0,this.explanMain);_(r)}}
               >
-                Catchup
+                Catch Up
               </button>
             </label>
           </div>`;case"finished":return k`<div>
