@@ -28,7 +28,7 @@ Press `Shift-Ctrl-H` to display all the keyboard shortcuts.
 - Durations are entered in human-centric notation, e.g. `2w3d` is two weeks and
   3 days.
 - Easily split or duplicate tasks.
-- Fast Fuzzy search to jumpt to task `Ctrl-F` or `Shift-Ctrl-F`.
+- Fast Fuzzy search to jump to task `Ctrl-F` or `Shift-Ctrl-F`.
 - Radar allows quick zooming into parts of the chart.
 - Double-click on a task in the chart to zoom into that task, showing only its
   predecessors and successors.

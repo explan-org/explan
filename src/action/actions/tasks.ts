@@ -164,7 +164,7 @@ export class MoveFocusToPredecessor8 extends MoveFocusToPredecessor1 {
   constructor() {
     super();
     this.predIndex = 7;
-    this.description = 'Moves focus to the eigth predecessor task.';
+    this.description = 'Moves focus to the eighth predecessor task.';
   }
 }
 
@@ -260,7 +260,7 @@ export class MoveFocusToSuccessor8 extends MoveFocusToSuccessor1 {
   constructor() {
     super();
     this.succIndex = 7;
-    this.description = 'Moves focus to the eigth successor task.';
+    this.description = 'Moves focus to the eighth successor task.';
   }
 }
 
