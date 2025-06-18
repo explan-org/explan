@@ -105,6 +105,14 @@ export class SelectedTaskPanel extends HTMLElement {
         >
           ${icon('add-icon')}
         </button>
+        <button
+          class="icon-button"
+          @click=${async () =>
+            await executeByName('GoToSearchAction', this.explanMain!)}
+          title="Search (Ctrl-F)"
+        >
+          ${icon('search')}
+        </button>
         <div>No task selected.</div>
       `;
     }
@@ -155,6 +163,14 @@ export class SelectedTaskPanel extends HTMLElement {
         title="Delete Task"
       >
         ${icon('delete-icon')}
+      </button>
+      <button
+        class="icon-button"
+        @click=${async () =>
+          await executeByName('GoToSearchAction', this.explanMain!)}
+        title="Search (Ctrl-F)"
+      >
+        ${icon('search')}
       </button>
       <table>
         <tr>
