@@ -1,8 +1,8 @@
 /**
  * Functionality for creating draggable dividers between elements on a page.
  */
-import { clamp } from "../../metrics/range.ts";
-import { Point, dup, equal, pt } from "../../point/point.ts";
+import { clamp } from '../../metrics/range.ts';
+import { Point, dup, equal, pt } from '../../point/point.ts';
 
 // Values are returned as percentages around the current mouse location. That
 // is, if we are in "column" mode then `before` would equal the mouse position
@@ -13,11 +13,12 @@ export interface DividerMoveResult {
   after: number;
 }
 
-export type DividerType = "column" | "row";
+export type DividerType = 'column' | 'row';
 
-export const DIVIDER_MOVE_EVENT = "divider_move";
+export const DIVIDER_MOVE_EVENT = 'divider_move';
 
-export const RESIZING_CLASS = "resizing";
+export const RESIZING_CLASS = 'resizing';
+export const DIVIDER_MOVING_CLASS = 'dragging';
 
 interface Rect {
   top: number;
@@ -99,26 +100,26 @@ export class DividerMove {
   constructor(
     parent: HTMLElement,
     divider: HTMLElement,
-    dividerType: DividerType = "column",
+    dividerType: DividerType = 'column'
   ) {
     this.parent = parent;
     this.divider = divider;
     this.dividerType = dividerType;
-    this.divider.addEventListener("mousedown", this.mousedown.bind(this));
+    this.divider.addEventListener('mousedown', this.mousedown.bind(this));
   }
 
   detach() {
-    this.parent.removeEventListener("mousemove", this.mousemove.bind(this));
-    this.divider.removeEventListener("mousedown", this.mousedown.bind(this));
-    this.parent.removeEventListener("mouseup", this.mouseup.bind(this));
-    this.parent.removeEventListener("mouseleave", this.mouseleave.bind(this));
+    this.parent.removeEventListener('mousemove', this.mousemove.bind(this));
+    this.divider.removeEventListener('mousedown', this.mousedown.bind(this));
+    this.parent.removeEventListener('mouseup', this.mouseup.bind(this));
+    this.parent.removeEventListener('mouseleave', this.mouseleave.bind(this));
     window.clearInterval(this.internvalHandle);
   }
 
   onTimeout() {
     if (!equal(this.currentMoveLocation, this.lastMoveSent)) {
       let diffPercent: number = 0;
-      if (this.dividerType === "column") {
+      if (this.dividerType === 'column') {
         diffPercent =
           (100 * (this.currentMoveLocation.x - this.parentRect!.left)) /
           this.parentRect!.width;
@@ -136,7 +137,7 @@ export class DividerMove {
             before: diffPercent,
             after: 100 - diffPercent,
           },
-        }),
+        })
       );
       this.lastMoveSent = dup(this.currentMoveLocation);
     }
@@ -155,10 +156,11 @@ export class DividerMove {
     this.parentRect = getPageRect(this.parent);
 
     this.parent.classList.add(RESIZING_CLASS);
+    this.divider.classList.add(DIVIDER_MOVING_CLASS);
 
-    this.parent.addEventListener("mousemove", this.mousemove.bind(this));
-    this.parent.addEventListener("mouseup", this.mouseup.bind(this));
-    this.parent.addEventListener("mouseleave", this.mouseleave.bind(this));
+    this.parent.addEventListener('mousemove', this.mousemove.bind(this));
+    this.parent.addEventListener('mouseup', this.mouseup.bind(this));
+    this.parent.addEventListener('mouseleave', this.mouseleave.bind(this));
 
     this.begin = pt(e.pageX, e.pageY);
   }
@@ -181,10 +183,11 @@ export class DividerMove {
     window.clearInterval(this.internvalHandle);
 
     this.parent.classList.remove(RESIZING_CLASS);
+    this.divider.classList.remove(DIVIDER_MOVING_CLASS);
 
-    this.parent.removeEventListener("mousemove", this.mousemove.bind(this));
-    this.parent.removeEventListener("mouseup", this.mouseup.bind(this));
-    this.parent.removeEventListener("mouseleave", this.mouseleave.bind(this));
+    this.parent.removeEventListener('mousemove', this.mousemove.bind(this));
+    this.parent.removeEventListener('mouseup', this.mouseup.bind(this));
+    this.parent.removeEventListener('mouseleave', this.mouseleave.bind(this));
 
     this.currentMoveLocation = end;
     this.onTimeout();
