@@ -9,7 +9,7 @@ import { clamp } from '../metrics/range.ts';
 import { TaskCompletion } from '../task_completion/task_completion.ts';
 import { SetTaskCompletionSubOp } from './plan.ts';
 
-export const DEFAULT_TASK_DURATION = 100;
+export const DEFAULT_TASK_DURATION = 14;
 
 export const splitDuration = (total: number): [number, number] => {
   const half = total / 2;
@@ -867,7 +867,6 @@ export function SetTaskNameOp(taskIndex: number, name: string): Op {
 export function SplitTaskOp(taskIndex: number): Op {
   const subOps: SubOp[] = [
     new DupTaskSubOp(taskIndex),
-    new SplitDurationSubOp(taskIndex, taskIndex + 1),
     new MoveAllOutgoingEdgesFromToSubOp(taskIndex, taskIndex + 1),
     new AddEdgeSubOp(taskIndex, taskIndex + 1),
   ];

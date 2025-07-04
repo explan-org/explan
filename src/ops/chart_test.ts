@@ -158,9 +158,8 @@ describe('Chart Ops Tests', () => {
             'Start->B',
           ]);
           assert.equal(plan.chart.Vertices.length, 6);
-          const [d1, d2] = splitDuration(DEFAULT_TASK_DURATION);
-          assert.equal(plan.chart.Vertices[3].duration, d1);
-          assert.equal(plan.chart.Vertices[4].duration, d2);
+          assert.equal(plan.chart.Vertices[3].duration, DEFAULT_TASK_DURATION);
+          assert.equal(plan.chart.Vertices[4].duration, DEFAULT_TASK_DURATION);
         }),
       ]);
     });
