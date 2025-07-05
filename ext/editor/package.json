@@ -1,7 +1,7 @@
 {
   "name": "explan",
   "displayName": "Explan - Gantt Chart Editor",
-  "description": "Create and edit gantt charts for project planning.",
+  "description": "Create and edit gantt charts for project planning. Project management software for running projects, creating and maintaining project timelines.",
   "version": "0.0.5",
   "publisher": "explan-org",
   "icon": "images/logo2-128x128.png",
