@@ -69,15 +69,11 @@ export class SelectedTaskPanel extends HTMLElement {
     this.plan = explainMain.plan;
     this.taskIndex = taskIndex;
     this.render();
-    /*
-    TODO - Do the following when selecting a new task.
-      window.setTimeout(() => {
-        const input =
-          selectedTaskPanel.querySelector<HTMLInputElement>("#task-name")!;
-        input.focus();
-        input.select();
-      }, 0);
-      */
+    window.setTimeout(() => {
+      const input = this.querySelector<HTMLInputElement>('#task-name')!;
+      input.focus();
+      input.select();
+    }, 0);
   }
 
   render() {

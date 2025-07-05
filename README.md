@@ -4,6 +4,10 @@ A VS Code extension for creating and editing Gantt charts.
 
 ![Screenshot](images/Screenshot.png)
 
+# Documentation
+
+https://explan.org
+
 ## Installation
 
 See the VS Code Marketplace entry for Explan:
