@@ -59,6 +59,10 @@ import {
 } from '../image/image.ts';
 import { PngMetadata } from '../vendor/png-metadata/src/png-metadata.ts';
 import { ImageExportPanel } from '../image-export-panel/image-export-panel.ts';
+import {
+  getRadarVisible,
+  setRadarVisible,
+} from '../radar-state/radar-state.ts';
 
 const FONT_SIZE_PX = 32;
 
@@ -220,12 +224,15 @@ export class ExplanMain extends HTMLElement {
     });
     applyStoredTheme();
 
-    this.querySelector<HTMLInputElement>('#radar-toggle')!.addEventListener(
-      'input',
-      (e: Event) => {
-        this.setRadar((e.target as HTMLInputElement).checked);
-      }
-    );
+    const radarControl = this.querySelector<HTMLInputElement>('#radar-toggle')!;
+    const radarVisible = getRadarVisible();
+    radarControl.checked = radarVisible;
+    this.setRadar(radarVisible);
+    radarControl.addEventListener('input', (e: Event) => {
+      const visible = (e.target as HTMLInputElement).checked;
+      setRadarVisible(visible);
+      this.setRadar(visible);
+    });
 
     this.querySelector<HTMLInputElement>(
       '#critical-paths-toggle'
