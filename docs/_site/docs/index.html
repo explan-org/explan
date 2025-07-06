@@ -92,6 +92,42 @@
         font-weight: 800;
       }
 
+      table {
+        border-collapse: collapse;
+        padding: 32px;
+        display: block;
+      }
+
+      tr {
+        background-color: var(--background);
+        border-bottom: 1px solid var(--surface-2dp);
+      }
+
+      tr:hover {
+        background-color: var(--surface);
+      }
+
+      td,
+      th {
+        color: var(--on-background);
+        padding: 10px;
+      }
+
+      td {
+        font-size: 90%;
+        vertical-align: middle;
+      }
+
+      th {
+        font-size: 75%;
+        opacity: var(--text-intensity-medium);
+        text-align: right;
+      }
+
+      td.number {
+        text-align: right;
+      }
+
       .roboto-header * {
         font-family: 'Roboto', sans-serif;
         font-optical-sizing: auto;
@@ -165,8 +201,15 @@
         img {
           max-width: 100%;
           height: auto;
-          border: solid var(--primary) 4px;
+          border: solid var(--on-surface-muted) 1px;
+          box-shadow: 5px 5px 6px -2px var(--on-surface);
+
+          &.inline {
+            border: none;
+            box-shadow: none;
+          }
         }
+
 
         code {
           color: var(--secondary);

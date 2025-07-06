@@ -92,6 +92,42 @@
         font-weight: 800;
       }
 
+      table {
+        border-collapse: collapse;
+        padding: 32px;
+        display: block;
+      }
+
+      tr {
+        background-color: var(--background);
+        border-bottom: 1px solid var(--surface-2dp);
+      }
+
+      tr:hover {
+        background-color: var(--surface);
+      }
+
+      td,
+      th {
+        color: var(--on-background);
+        padding: 10px;
+      }
+
+      td {
+        font-size: 90%;
+        vertical-align: middle;
+      }
+
+      th {
+        font-size: 75%;
+        opacity: var(--text-intensity-medium);
+        text-align: right;
+      }
+
+      td.number {
+        text-align: right;
+      }
+
       .roboto-header * {
         font-family: 'Roboto', sans-serif;
         font-optical-sizing: auto;
@@ -165,8 +201,15 @@
         img {
           max-width: 100%;
           height: auto;
-          border: solid var(--primary) 4px;
+          border: solid var(--on-surface-muted) 1px;
+          box-shadow: 5px 5px 6px -2px var(--on-surface);
+
+          &.inline {
+            border: none;
+            box-shadow: none;
+          }
         }
+
 
         code {
           color: var(--secondary);
@@ -197,52 +240,40 @@
     <main>
       
 
-<p>
-    A VS Code extension for creating and editing Gantt charts.
+<h1 id="what-is-explan">What is Explan?</h1>
+<p>Explan is a visual project planning tool for VS Code that helps
+    create, edit, and explore project timelines with ease.
 </p>
 
-<img src="images/Screenshot.png" title="Screenshot" width="1000">
-
-<h2>Installation</h2>
-
-<p>
-    See the VS Code Marketplace entry for Explan:
-
-    <a href="https://marketplace.visualstudio.com/items?itemName=Explan-org.explan">
-    https://marketplace.visualstudio.com/items?itemName=Explan-org.explan</a>
-
-</p>
-
-<h2>Getting started</h2>
-
-<p>
-    To start create an empty file with an extension of <code>.explan</code>, <code>.explan.json</code>, or
-    <code>.explan.png</code> and open it in Visual Studio Code.
-</p>
-<p>
-    Or run the <code>Explan: Create new Explan Document</code> action.
-</p>
-<p>
-    Press <code>Shift-Ctrl-H</code> to display all the keyboard shortcuts.
-</p>
-<p>
-<h2>Features</h2>   
-</p>
+<h2 id="highlights">Highlights</h2>
 <ul>
-    <li> Plans can be stored in either JSON format (`*.explan` or `*.explan.json`) or as PNG files (`*.explan.png`).
+    <li>
+        Designed with technical project managers in mind who already work in
+        VS Code
     </li>
-    <li> Regardless of the format the charts can always be reopened and edited.</li>
-    <li> Add your own resource and metric definitions.</li>
-    <li> Durations are entered in human-centric notation, e.g. `2w3d` is two weeks and 3 days.</li>
-    <li> Easily split or duplicate tasks.</li>
-    <li> Fast Fuzzy search to jump to task `Ctrl-F` or `Shift-Ctrl-F`.</li>
-    <li> Radar allows quick zooming into parts of the chart.</li>
-    <li> Double-click on a task in the chart to zoom into that task, showing only its predecessors and successors.</li>
-    <li> Simulate possible project timelines based on the Uncertainty set for each task, allowing the discovery of
-        hidden critical paths.</li>
-    <li> Group tasks by resource, for example to show what each person is working on.</li>
+    <li>
+        Ideal for teams that live in coding environments rather than
+        dashboards
+    </li>
+    <li>
+        Version-control friendly with plans being stored as unique files
+    </li>
+    <li>
+        Lightweight, instant and offline; no login or loading screens
+    </li>
+    <li>
+        Accounts for uncertainty in project tasks with algorithmic simulation
+    </li>
+    <li>
+        Customizable for projects of all shapes and sizes with customizable resources and metrics
+    </li>
+    <li>
+        Able to be keyboard driven with various shortcuts for an efficient
+        user experience
+    </li>
 </ul>
-<h2>Darkmode</h2>
+
+<h3>Darkmode</h3>
 <p>
     Supports both dark mode and light mode:
 </p>
@@ -253,6 +284,546 @@
 <p>
     None.
 </p>
+
+
+<h1 id="getting-started">Getting Started</h1>
+<p>Install Explan directly from the VS Code Marketplace:
+<p>
+<blockquote>
+    <a
+        href="https://marketplace.visualstudio.com/items?itemName=Explan-org.explan">https://marketplace.visualstudio.com/items?itemName=Explan-org.explan</a>
+</blockquote>
+</p>
+<p>
+    Or search for ‘Explan’ in the extensions panel within VS Code (Ctrl + Shift
+    + X).
+</p>
+<p>
+<blockquote>
+    <img src="images/media/image24.png" />
+</blockquote>
+</p>
+<p>Once installed, choose one of the two ways of creating an Explan
+    file:</p>
+
+<p>
+    1. Create a file with the extension of <code>.explan</code>, <code>.explan.json</code>, or
+    <code>.explan.png</code> and open it using VS Code
+</p>
+
+<p>or</p>
+
+<p>
+    2. Run the Explan: Create new Explan Document action via the command
+    palette (Ctrl + Shift + P)
+    <img src="images/media/image30.png" />
+</p>
+
+<p>Either way, VS Code start up an empty Explan file with an interface that
+    looks like this:</p>
+<p><img src="images/media/image45.png" style="width:6.4375in;height:4in" /></p>
+
+<p>
+    Press <code>Shift-Ctrl-H</code> to display all the keyboard shortcuts.
+</p>
+
+<h1 id="guides">Guides</h1>
+<h2 id="zooming-and-navigation">Zooming and navigation</h2>
+<h3 id="panel-navigation">Panel navigation:</h3>
+<p><img src="images/media/image38.png" style="width:4.93229in;height:2.97517in" /></p>
+<p>Use the navigation buttons in the top-right to switch between the
+    “Task,” “Project,” “Simulation,” and “Config” panels.</p>
+<p><img src="images/media/image25.png" style="width:5.17188in;height:2.95009in" /></p>
+<p>The right-hand panels can be resized by dragging on the left side
+    notch of the panel.</p>
+<h3 id="task-navigation">Task navigation:</h3>
+<h4 id="task-area">Task area</h4>
+<p><img src="images/media/image48.png" style="width:6.5in;height:3.48611in" /></p>
+<p>Click on a task on the left-hand side to “select” it. The details
+    will appear in the Task tab if it is open.</p>
+<p>Double clicking on a task will “Zoom” into it. In the zoomed mode,
+    only the selected task and its immediate successors and predecessors
+    will be displayed. Additionally, in the zoomed mode, single clicks on
+    other tasks will move the “Zoom” focus onto that task. To exit the
+    “Zoom” view and return to the full project view, double click on empty
+    space around the tasks.</p>
+<!-- <p>[gif of zoom navigation]</p> -->
+<p>Keyboard shortcuts can also be used to navigate between zoomed in
+    tasks.</p>
+<!-- <p>[task keyboard nav labelled screenshot]</p> -->
+<h4 id="radar">Radar</h4>
+<p><img src="images/media/image4.png" style="width:6.5in;height:2.875in" /></p>
+<p>The radar shows a visual summary of the entire project. Clicking and
+    dragging the mouse on the radar will change the task display to show
+    only the radar selected portion of the project.</p>
+<!-- <p>[gif of selecting?]</p> -->
+<p>The radar view can be toggled on and off using the “Show radar”
+    checkbox at the top of the screen.</p>
+<h4 id="fuzzy-search">Fuzzy Search</h4>
+<p><img src="images/media/image22.png" style="width:3.60417in;height:3.55208in" /></p>
+<p>Using <strong>Ctrl-F</strong> will bring up a searchable list of all
+    tasks in the project. The search is a fast fuzzy search, meaning that it
+    will identify partial matches as well as full matches.</p>
+<p>Navigate the search results using the up, down, and enter keys. The
+    currently selected result is indicated by a line that is highlighted in
+    blue. To enter a zoomed view of the selected result, press
+    Ctrl-Enter.</p>
+<h2 id="task-panel">Task Panel</h2>
+<p>A task can be edited by clicking the task name on the left-hand
+    panel. This will select the task and display all task details on the
+    right-hand panel, also known as the “Task” tab.</p>
+<p><img src="images/media/image9.png" style="width:6.5in;height:4.45833in" /></p>
+<p>Within the Task tab, you are able to view and manipulate all of the
+    selected task’s properties, as well as access 4 quick shortcuts.</p>
+<p><img class=inline src="images/media/image19.png" style="width:1.63542in;height:0.40625in" /></p>
+<p><img class=inline src="images/media/image28.png" style="width:0.30208in;height:0.30208in" /> : Insert a new task to
+    the
+    project</p>
+<p><img class=inline src="images/media/image23.png" style="width:0.32292in;height:0.33333in" /> : Duplicate the selected
+    task. The duplicate will have the same predecessors and successors as
+    the original task.</p>
+<p><img class=inline src="images/media/image2.png" style="width:0.38542in;height:0.27083in" /> : Split a task into two
+    tasks of equal halves. The resulting two tasks will both be half the
+    duration of the original. The second half will be a successor of the
+    first task.</p>
+<p><img class=inline src="images/media/image6.png" style="width:0.30208in;height:0.3125in" /> : Delete the selected
+    task.</p>
+<h3 id="task-properties">Task properties</h3>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <td>The name of your task. The default value is “Task Name.”</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>A field to describe the task. This field is optional.</td>
+    </tr>
+    <tr>
+        <th>Duration</th>
+        <td>
+            <p>The length of time that the task will take to complete. The units
+                of time can be changed in the “Project” tab as total days(7),
+                weekdays(5) and unitless. Syntax is Months(m) Weeks(w) Days(d).</p>
+            <p>For example: If your start date is 1/1 on Monday, and your task
+                duration is 1w in <strong>total days</strong> (7), you will end on
+                1/8.</p>
+            <p>If your task duration is 1w in <strong>weekdays</strong> (5), you
+                will end on 1/6.</p>
+            <p><img src="images/media/image5.png" style="width:5.42708in;height:3.34722in" /></p>
+        </td>
+    </tr>
+    <tr>
+        <th>Uncertainty</th>
+        <td>The measure of how unpredictable a task’s duration is. Selectable
+            values are low, moderate, high, and extreme. The uncertainty multipliers
+            are the same as used in
+            <a href="https://jacobian.org/2021/may/25/my-estimation-technique/">Jacob
+                Kaplan Moss's software estimation technique</a>.
+        </td>
+    </tr>
+    <tr>
+        <th>Predecessors</th>
+        <td>Tasks that must be completed before the selected task can
+            start.</td>
+    </tr>
+    <tr>
+        <th>Successors</th>
+        <td>Tasks that start after the selected task is completed.</td>
+    </tr>
+</table>
+
+<p>The following properties will only appear after a project has been
+    marked as “<strong>Started</strong>” in the “<strong>Project</strong>”
+    tab.</p>
+<table>
+    <tr class="header">
+        <th>Started</th>
+        <td>A boolean value that marks whether a task has been started. A date
+            can be entered to define when the task started.</td>
+    </tr>
+    <tr class="odd">
+        <th>Finished</th>
+        <td>A boolean value that marks whether a task has been finished. A date
+            can be entered to define when the task finished.</td>
+    </tr>
+    <tr class="header">
+        <th>% Complete</th>
+        <td>The percentage that a task has been completed thus far.</td>
+    </tr>
+</table>
+<h3 id="task-visualization">Task visualization</h3>
+<ul>
+    <li>
+        Tasks that are <strong>Blue</strong> are on the critical path.
+    </li>
+    <li>
+        Tasks that are <strong>Green</strong> have been marked as started in
+        the task details. Based on the “% Complete” entered for a task, the
+        horizontal taskbar will be shaded accordingly.
+    </li>
+    <li>
+        Other tasks are <strong>gray.</strong>
+    </li>
+    <li>
+        A task with 0 duration, known as a <strong>milestone</strong>, is
+        represented with a triangle
+    </li>
+    <li>
+        A vertical, red dotted line in the task area indicates today’s
+        date
+    </li>
+</ul>
+<p><img src="images/TaskLegend.png" /></p>
+
+<p>Toggle the “Only show critical paths” option to only view critical
+    paths.</p>
+<p><img src="images/media/image43.png" /></p>
+
+<h3 id="catchup">Catch up</h3>
+<p>In Explan, the term "Catch Up" means to bring task completion % up to
+    the red dotted line. The line denotes where task completion should be
+    for that date to be "on time."</p>
+<p>There are two buttons that can be used to “Catch Up” tasks with two
+    different use cases.</p>
+<p>The <img src="images/media/image37.png" style="width:0.92296in;height:0.32021in" /> button <strong>at the
+        top</strong> of Explan will catch up <strong>all</strong> task
+    progress -- including those that are not yet started, up to the
+    percentage they should be at for today's date, as denoted by the red
+    bar.</p>
+<p>For example:</p>
+<p><strong>Before:</strong></p>
+<p><img src="images/media/image35.png" style="width:5.82508in;height:2.92188in" /></p>
+<p><strong>After:</strong></p>
+<p>Note how the "Other" and "Critical Path Path 1" tasks are updated.</p>
+<p>Also note how the % completion of "Started 80%" task isn't reduced.</p>
+<p><img src="images/media/image32.png" style="width:6.5in;height:3.13889in" /></p>
+<p>The <img src="images/media/image29.png" style="width:0.78234in;height:0.34375in" /> button found within
+    <strong>individual task details</strong> can be used to catch up the
+    selected task individually.
+</p>
+<p>For example:</p>
+<p><strong>Before:</strong></p>
+<p><img src="images/media/image31.png" style="width:6.5in;height:3.16667in" /></p>
+<p><strong>After:</strong></p>
+<h3 id="section-1"><img src="images/media/image18.png" style="width:6.5in;height:3.36111in" /></h3>
+<h3 id="group-by">Group by</h3>
+<p>Use the “Group by” dropdown to group your tasks based on a selected
+    resource.</p>
+<p>For example, tasks can be grouped by uncertainty.</p>
+<p><img src="images/media/image41.png" style="width:6.5in;height:4.75in" /></p>
+<h2 id="project-panel">Project Panel</h2>
+
+<img src="./images/ProjectTag.png">
+
+<h3 id="plan-status">Plan Status:</h3>
+<p>The “Started” checkbox indicates whether or not the project has begun or not.
+    A field is available to enter a project start date. Based on the project start
+    date entered, a red line, the "today" marker, may appear on the task view.</p>
+<h3 id="resources-metric-customization">Resources &amp; metric
+    customization</h3>
+<p>In addition to default fields such as Name and Duration, users can
+    add customized resources and metrics to the project to track trask
+    information with.</p>
+<table>
+    <tr>
+        <th> Resource</th>
+        <td> Options that have a finite set of
+            options. For example, a “Person” resource might track who is working on
+            each task.Note: The “Uncertainty” resource and values cannot be deleted or
+            edited.
+        </td>
+        <p></p>
+        </th>
+    </tr>
+    <tr>
+        <th>Metrics</th>
+        <td> Number values that can be tracked for
+            each task. For example, “Cost” metric might be added to track the cost
+            of each task.
+            Note: The “Duration” metric and values cannot be deleted or
+            edited.</td>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<h3 id="resources">Resources</h3>
+<p>To add custom resources, use the right-hand panel navigation to click
+    on the “Project” tab.</p>
+<p><img src="images/media/image13.png" style="width:2.01563in;height:0.36515in" /></p>
+<p>Add a new <strong>resource</strong> by clicking the <img src="images/media/image42.png"
+        style="width:0.31036in;height:0.29522in" /> icon under the
+    “<strong><u>Resources</u></strong>” section.</p>
+<p><img src="images/media/image3.png" style="width:2.21354in;height:1.3853in" /></p>
+<p>Type in the name of a resource and hit “OK.”</p>
+<p><img src="images/media/image34.png" style="width:1.6571in;height:1.12387in" /></p>
+<p>The new resource will show up at the bottom of the list.</p>
+<p><img src="images/media/image44.png" style="width:2.11979in;height:1.6575in" /></p>
+<p>Add values to a resource by clicking the pencil icon to the right of
+    the resource. The first value listed in the resource is used as the
+    default value for every new task created.</p>
+<p><img src="images/media/image7.png" style="width:2.18229in;height:1.35915in" /></p>
+<p>In the above image, “Andy” will be the default “Person” value for all
+    new tasks created.</p>
+<p>Use the <img src="images/media/image46.png" style="width:1.58065in;height:0.3108in" /> buttons to reorder the
+    values.</p>
+<p><img src="images/media/image12.png" style="width:0.3125in;height:0.27083in" />: Move value up one row</p>
+<p><img src="images/media/image20.png" style="width:0.34375in;height:0.32292in" />: Move value down one row</p>
+<p><img src="images/media/image11.png" style="width:0.32292in;height:0.33333in" />: Move value to the top
+    row</p>
+<p><img src="images/media/image15.png" style="width:0.34375in;height:0.29167in" />: Move value to the bottom
+    row</p>
+<p><strong>Tip</strong>: For a “Person” resource, the first value could
+    be entered as “Unassigned.” This way, all new tasks will have the value
+    “Person: Unassigned.” This reflects practical use and the person
+    resource can be assigned per task as you go.</p>
+<p><img src="images/media/image27.png" style="width:2.99479in;height:1.69905in" /></p>
+<h3 id="metrics">Metrics</h3>
+<p>To add custom resources, use the right-hand panel navigation to click
+    on the “Project” tab.</p>
+<p><img src="images/media/image13.png" style="width:2.01563in;height:0.36515in" /></p>
+<p>Add a new <strong>metric</strong> by clicking the <img src="images/media/image42.png"
+        style="width:0.31036in;height:0.29522in" /> icon under the
+    “<strong><u>Metrics</u></strong>” section.</p>
+<p><img src="images/media/image36.png" style="width:2.13021in;height:1.26074in" /></p>
+<p>Type in the name of a metric and hit “OK.”</p>
+<p><img src="images/media/image26.png" style="width:1.45404in;height:1.03258in" /></p>
+<p>The new metric will show up at the bottom of the list.</p>
+<p><img src="images/media/image8.png" style="width:3.17188in;height:1.98474in" /></p>
+<p>The precision, as well as the range of the values in a
+    <strong>metric</strong> can be edited by clicking the pencil icon to the
+    right of the resource.
+</p>
+<p><img src="images/media/image33.png" style="width:2.47396in;height:1.87239in" /></p>
+<h2 id="simulation-panel">Simulation Panel</h2>
+<p>The “Simulate” button simulates the entire project 100 times based on
+    entered task durations and uncertainty levels. Clicking the “Simulate”
+    button returns various statistics from the simulations.</p>
+<h3 id="critical-path">Critical Path</h3>
+<p><img src="images/media/image10.png" style="width:4.16667in;height:1.1875in" /></p>
+<p>The <strong>Critical Path</strong> section lists various changes to
+    the critical path that happened in the simulation, along with the count
+    of how many times the specific change happened.</p>
+<ul>
+    <li>
+        Tasks listed in red denoted with a “-” symbol disappeared from the
+        critical path in that specific iteration
+    </li>
+    <li>
+        Tasks listed in green denoted with a “+” symbol were added to the
+        critical path in that specific iteration
+    </li>
+</ul>
+<p>This data can be used to get a better understanding of what tasks
+    might be statistically important to port more resources to based on the
+    frequency it shows up on the critical path.</p>
+<p><img src="images/media/image47.png" style="width:2.41667in;height:2.5625in" /></p>
+<p>The duration/frequency section lists out all tasks in the
+    project.</p>
+<ul>
+    <li>
+        The duration column lists each task’s user-set duration.
+        The duration units are based on the user selected units in the
+        “Project” tab.
+    </li>
+    <li>
+        The frequency column displays how often the task actually took the
+        duration entered by the user in the task details.
+    </li>
+</ul>
+<p>For example, a task that was entered with a duration of one week and
+    low uncertainty might have a high frequency of taking one week in the
+    simulation.</p>
+<p>Likewise, another one week task with high uncertainty might have a very
+    low frequency of taking one week in the simulation due to the high
+    uncertainty.</p>
+<h2 id="config-panel">Config Panel</h2>
+<p><img src="images/media/image16.png" style="width:2.64063in;height:1.3765in" /></p>
+<p>In the “Config” panel, you can edit the image export settings.</p>
+<p>Editing the “<strong>Width</strong> (<strong>px</strong>)” setting
+    will change what width of image will be generated upon saving the image
+    as a PNG.</p>
+<p>Toggling the “<strong>Transparent Background</strong>” option will
+    remove the white background of the image when saved as a PNG.</p>
+<h1 id="saving-your-explan">Saving your explan</h1>
+<p>Explans can be saved in two main formats, <strong>JSON</strong>
+    (*.explan, *.explan.json) and <strong>PNG</strong>
+    (*.explan.png)<strong>.</strong></p>
+<p>View the sections below to learn how to change a file extension to
+    switch between <strong>JSON</strong> and <strong>PNG.</strong></p>
+<p>Note: The “Only show critical paths” toggleable option will not alter
+    the appearance of how an explan appears in image form. The entire
+    project will appear.</p>
+<h3 id="vs-code-version">VS Code Version:</h3>
+<p>Quick-save your file by pressing Ctrl-S in your VS Code window.</p>
+<p>To save a file as a <strong>png</strong>, press Ctrl-Shift-S in your
+    VS Code window. This is the keyboard shortcut for the “Save as…”
+    function in VS Code. A dialog box should open, prompting users to enter
+    a name and file extension.</p>
+<p><img src="images/media/image17.png" style="width:6.5in;height:0.97222in" /><img src="images/media/image1.png"
+        style="width:2.30208in;height:0.75in" /></p>
+<p><img src="images/media/image40.png" style="width:6.5in;height:1.01389in" /></p>
+<p>Now, this file can be used as an image like any other .png file.
+    Additionally, the file will still contain all of the plan data. Simply
+    open up the .explan.png in VS Code, and the entire explan is editable
+    with the explan extension.</p>
+<p>The process to save in <strong>json</strong> format is the same.
+    Simply replace the file extension with either “.explan” or
+    “.explan.json”.</p>
+<h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<p>Press Shift-Ctrl-H to view a list of all keyboard shortcuts.</p>
+<table>
+    <colgroup>
+        <col style="width: 18%" />
+        <col style="width: 81%" />
+    </colgroup>
+    <thead>
+        <tr class="header">
+            <th>alt-Delete</th>
+            <th>Deletes a task.</th>
+        </tr>
+        <tr class="odd">
+            <th>alt-Insert</th>
+            <th>Creates a new task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-1</th>
+            <th>Moves focus to the first successor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-2</th>
+            <th>Moves focus to the second successor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-3</th>
+            <th>Moves focus to the third successor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-4</th>
+            <th>Moves focus to the fourth successor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-5</th>
+            <th>Moves focus to the fifth successor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-6</th>
+            <th>Moves focus to the sixth successor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-7</th>
+            <th>Moves focus to the seventh successor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-8</th>
+            <th>Moves focus to the eighth successor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-9</th>
+            <th>Moves focus to the ninth successor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-f</th>
+            <th>Moves focus to search control.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-meta-1</th>
+            <th>Moves focus to the first predecessor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-meta-2</th>
+            <th>Moves focus to the second predecessor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-meta-3</th>
+            <th>Moves focus to the third predecessor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-meta-4</th>
+            <th>Moves focus to the fourth predecessor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-meta-5</th>
+            <th>Moves focus to the fifth predecessor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-meta-6</th>
+            <th>Moves focus to the sixth predecessor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-meta-7</th>
+            <th>Moves focus to the seventh predecessor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-meta-8</th>
+            <th>Moves focus to the eighth predecessor task.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-meta-9</th>
+            <th>Moves focus to the ninth predecessor task.</th>
+        </tr>
+        <tr class="odd">
+            <th>ctrl-y</th>
+            <th>Redoes the most recent undo action.</th>
+        </tr>
+        <tr class="header">
+            <th>ctrl-z</th>
+            <th>Undoes the last action.</th>
+        </tr>
+        <tr class="odd">
+            <th>shift-ctrl-&lt;</th>
+            <th>Prompts for and adds a predecessor to the current Task.</th>
+        </tr>
+        <tr class="header">
+            <th>shift-ctrl-&gt;</th>
+            <th>Prompts for and adds a successor to the current Task.</th>
+        </tr>
+        <tr class="odd">
+            <th>shift-ctrl-F</th>
+            <th>Moves focus to search control and does a full search of all resource
+                values.</th>
+        </tr>
+        <tr class="header">
+            <th>shift-ctrl-H</th>
+            <th>Displays the help dialog.</th>
+        </tr>
+        <tr class="odd">
+            <th>shift-ctrl-M</th>
+            <th>Toggles dark mode.</th>
+        </tr>
+        <tr class="header">
+            <th>shift-ctrl-R</th>
+            <th>Toggles the radar view.</th>
+        </tr>
+        <tr class="odd">
+            <th>shift-ctrl-V</th>
+            <th>Opens the developer panel.</th>
+        </tr>
+        <tr class="header">
+            <th>shift-ctrl-Z</th>
+            <th>Undoes the zoom.</th>
+        </tr>
+        <tr class="odd">
+            <th>shift-ctrl-_</th>
+            <th>Duplicates a task.</th>
+        </tr>
+        <tr class="header">
+            <th>shift-ctrl-|</th>
+            <th>Splits a task.</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<h3 id="section-2"></h3>
+<h3 id="section-3"></h3>
+<h2 id="example-workflow">Example Workflow</h2>
+<p>house example:</p>
+<p>new project, add tasks, zoom / view, assign resources / metrics</p>
+<p>screenshots / diagram of resources</p>
+<p>could include a quick start file</p>
     </main>
   </body>
 </html>
