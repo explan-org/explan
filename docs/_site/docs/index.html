@@ -128,6 +128,46 @@
         text-align: right;
       }
 
+      .button-like,
+      button {
+        align-items: center;
+        background: transparent;
+        border-radius: 4px;
+        border: solid 1px var(--on-surface);
+        box-shadow: none;
+        color: var(--on-surface);
+        display: inline-flex;
+        fill: var(--on-surface);
+        font-size: 14px;
+        height: 24px;
+        justify-content: center;
+        margin: 4px 2px;
+        min-width: auto;
+        padding: 0 4px;
+        text-align: center;
+        text-transform: none;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:active {
+          background: var(--surface-2dp);
+        }
+      }
+
+      .button-like:hover,
+      button.hover,
+      button:hover,
+      .button-like:focus,
+      button.focus,
+      button:focus {
+        opacity: 0.85;
+        outline: none;
+        background-color: var(--surface-1dp);
+      }
+
       .roboto-header * {
         font-family: 'Roboto', sans-serif;
         font-optical-sizing: auto;
@@ -232,6 +272,19 @@
             <a href="/play">Try Explan on the Web</a>
           </li>
         </ul>
+          <button id=darkmode>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                id="invert-colors"
+                d="M12 4.81V19c-3.31 0-6-2.63-6-5.87 0-1.56.62-3.03 1.75-4.14L12 4.81M6.35 7.56C4.9 8.99 4 10.96 4 13.13 4 17.48 7.58 21 12 21s8-3.52 8-7.87c0-2.17-.9-4.14-2.35-5.57L12 2 6.35 7.56z"
+              />
+            </svg>
+          </button>
       </nav>
     </header>
     <main>
@@ -241,5 +294,15 @@
 TBD
 
     </main>
+    <script>
+        const changeMode = (dark) => {
+            document.body.classList.toggle("darkmode", dark);
+            window.localStorage.setItem("dark-mode-key", dark ? "1" : "0");
+        }
+        document.querySelector("#darkmode").addEventListener("click", () => {
+            changeMode(!document.body.classList.contains("darkmode"));
+        });
+        changeMode(window.localStorage.getItem("dark-mode-key") === "1");
+    </script>
   </body>
 </html>
