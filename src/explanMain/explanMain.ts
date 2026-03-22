@@ -63,6 +63,7 @@ import {
   getRadarVisible,
   setRadarVisible,
 } from '../radar-state/radar-state.ts';
+import { SpreadsheetTaskPanel } from '../spreadsheet-task-panel/spreadsheet-task-panel.ts';
 
 const FONT_SIZE_PX = 32;
 
@@ -305,6 +306,34 @@ export class ExplanMain extends HTMLElement {
     this.querySelector<EditMetricsPanel>('edit-metrics-panel')!.setConfig(this);
 
     this.querySelector<ImageExportPanel>('image-export-panel')!.setConfig(this);
+
+    const spreadsheetPanel = this.querySelector<SpreadsheetTaskPanel>(
+      'spreadsheet-task-panel'
+    )!;
+    spreadsheetPanel.setConfig(this);
+    spreadsheetPanel.addEventListener(
+      'task-name-change',
+      async (e: CustomEvent<TaskNameChangeDetails>) => {
+        const op = SetTaskNameOp(e.detail.taskIndex, e.detail.name);
+        reportIfError(await executeOp(op, 'planDefinitionChanged', true, this));
+      }
+    );
+    spreadsheetPanel.addEventListener(
+      'task-resource-value-change',
+      async (e: CustomEvent<TaskResourceValueChangeDetails>) => {
+        const { name, value, taskIndex } = e.detail;
+        const op = SetResourceValueOp(name, value, taskIndex);
+        reportIfError(await executeOp(op, 'planDefinitionChanged', true, this));
+      }
+    );
+    spreadsheetPanel.addEventListener(
+      'task-metric-value-change',
+      async (e: CustomEvent<TaskMetricValueChangeDetails>) => {
+        const { name, value, taskIndex } = e.detail;
+        const op = SetMetricValueOp(name, value, taskIndex);
+        reportIfError(await executeOp(op, 'planDefinitionChanged', true, this));
+      }
+    );
 
     const goupByControl =
       this.querySelector<GroupByControl>('groupby-control')!;

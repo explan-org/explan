@@ -18,5 +18,6 @@ import './simulation-panel/simulation-panel.ts';
 import './search/search-task-panel.ts';
 import './search/task-search-controls.ts';
 import './dependencies/dependencies-panel.ts';
+import './spreadsheet-task-panel/spreadsheet-task-panel.ts';
 import './explanMain/explanMain.ts';
 import './developer-panel/developer-panel.ts';

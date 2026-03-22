@@ -424,6 +424,39 @@
           text-align: left;
         }
       }
+
+      spreadsheet-task-panel {
+        display: block;
+        overflow: auto;
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        th {
+          text-align: left;
+          padding: 4px 8px;
+          border-bottom: solid 2px var(--on-surface-muted);
+          white-space: nowrap;
+        }
+
+        td {
+          padding: 2px 4px;
+          border-bottom: solid 1px var(--surface-1dp);
+        }
+
+        input[type='text'],
+        input[type='number'] {
+          width: 100%;
+          min-width: 60px;
+        }
+
+        select {
+          margin: 0;
+          width: 100%;
+        }
+      }
       edit-resource-definition p {
         font-size: 80%;
         color: var(--on-surface-muted);
@@ -661,6 +694,7 @@
       <panels-parent>
         <tab-buttons>
           <button data-target="task-tab" class="selected">Task</button>
+          <button data-target="spreadsheet-tab">Spreadsheet</button>
           <button data-target="project-tab">Project</button>
           <button data-target="simulate-tab">Simulation</button>
           <button data-target="config-tab">Config</button>
@@ -672,6 +706,9 @@
           <selected-task-panel> </selected-task-panel>
           <task-completion-panel> </task-completion-panel>
           <dependencies-panel> </dependencies-panel>
+        </tab-panel>
+        <tab-panel id="spreadsheet-tab" class="hidden">
+          <spreadsheet-task-panel> </spreadsheet-task-panel>
         </tab-panel>
         <tab-panel id="project-tab" class="hidden">
           <plan-config-panel> </plan-config-panel>
